@@ -5,51 +5,73 @@
 <link href="{% static 'stores.css' %}" rel="stylesheet">
 <div class="Stores_Stock">
 	<div class="panel">
+		Upload from excel->
+		<a href="{% static 'stores_db.xlsx' %}" download onclick="{{ download }}">
+			<img src="{% static 'excel.jpg' %}" alt="excel picture" height="20px" width="20px">
+		</a>
 		Download to excel->
 		<a href="{% static 'stores_db.xlsx' %}" download onclick="{{ download }}">
 			<img src="{% static 'excel.jpg' %}" alt="excel picture" height="20px" width="20px">
 		</a>
 	</div>
-	<div class="baza">
-		<table>
-			<tr>
-				<th>Area</th>
-				<th>Country</th>
-				<th>City</th>
-				<th>Store Name</th>
-				<th>Sku</th>
-				<th>Product Description</th>
-				<th>Invoice Number</th>
-				<th>Quantity</th>
-				<th>Price</th>
-				<th>Value</th>
-			</tr>
-			{% for i in query_results %}
-			<tr> 
-				<td>{{ i.area }}</td>
-				<td>{{ i.country }}</td>
-				<td>{{ i.city }}</td>
-				<td>{{ i.customer_name }}</td>
-				<td>{{ i.store_name }}</td>
-				<td>{{ i.sku }}</td>
-				<td>{{ i.product_description }}</td>
-				<td>{{ i.invoice_number }}</td>
-				<td>{{ i.quantity }}</td>
-				<td>{{ i.price }}</td>
-				<td>
-					{% with q=i.quantity p=i.price %}
-					{{ q|mul:p }}
-					{% endwith %}
-				</td>
-			</tr>
-			{% endfor %}
-		</table>		
+	<div class="panel_baza">
+		<div class="left_panel">
+			<p>Area Filter</p></br>
+			<p>Country Filter</p></br>
+			<p>City Filter</p></br>
+			<p>Store Name Filter</p></br>
+			<p>Sku Filter</p></br>
+			<p>Product Description Filter</p></br>
+			<p>Invoice Number Filter</p></br>
+			<p>Quantity Filter</p></br>
+			<p>Price Filter</p></br>
+			<p>Value Filter</p></br>
+		</div>
+		<div class="baza">
+			<table class="content-table">
+				<thead>
+					<tr>
+						<th>Area</th>
+						<th>Country</th>
+						<th>City</th>
+						<th>Store Name</th>
+						<th>Sku</th>
+						<th>Product Description</th>
+						<th>Invoice Number</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				{% for i in query_results %}
+				<tbody>
+					<tr> 
+						<td>{{ i.area }}</td>
+						<td>{{ i.country }}</td>
+						<td>{{ i.city }}</td>
+						<td>{{ i.store_name }}</td>
+						<td>{{ i.sku }}</td>
+						<td>{{ i.product_description }}</td>
+						<td>{{ i.invoice_number }}</td>
+						<td>{{ i.quantity }}</td>
+						<td>{{ i.price }}</td>
+						<td>
+							{% with q=i.quantity p=i.price %}
+							{{ q|mul:p }}
+							{% endwith %}
+						</td>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>		
+		</div>
 	</div>
 	<div class="form">
 		<form method="POST" class="data_form">
 			{% csrf_token %}
+			<div>Insert Data</div>		
 			<p>{{ form.as_p }}</p>
-			<input type="submit" width="20", height="20" value="save" />
+			<input type="submit" value="SUBMIT" />
 		</form>
 	</div>
 </div>

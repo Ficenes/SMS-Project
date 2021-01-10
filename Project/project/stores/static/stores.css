@@ -14,6 +14,24 @@
   justify-content: flex-end;
 }
 
+.panel a{
+  margin-right: 25px;
+}
+
+.panel_baza {
+  display: flex;
+  flex-direction: row;
+}
+
+.left_panel {
+  width: 20%;
+  font-family: sans-serif;
+  color: rgb(87, 94, 94);
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+}
+
 .baza {
   display: flex;
   overflow: auto;
@@ -21,8 +39,42 @@
   height: 400px;
 }
 
+.content-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.content-table thead tr {
+  background-color: rgb(161, 213, 255);
+  color: rgb(87, 94, 94);
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 125px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(161, 213, 255);
+}
+
 .form{
-  background-color: rgb(124, 5, 5);
+  background-color: rgb(87, 94, 94);
   position: absolute;
   top: 675px;
   bottom: 0;
@@ -32,8 +84,34 @@
 .data_form {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.data_form div {
+  width: 126px;
+  height: 25px;
+  margin-top: 12px;
+  color: white;
+  font-weight: bold;
 }
 
 .Stores_Quantity_Form {
-  width: 100px;
+  width: 126px;
+  height: 25px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+
+input[type=submit] {
+  width: 125px;
+  height: 25px;
+  margin-top: 10px;
+  background-color: rgb(161, 213, 255);
+  border: 1px solid #ddd;
+  color: rgb(87, 94, 94);
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: sans-serif;
 }
