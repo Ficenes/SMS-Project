@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+	<link href="{% static 'shop.css' %}" rel="stylesheet">
+	<div id="core">
+		<div id="shop">
+			<table class="table">
+				<tr>
+					<th>Sku</th>
+					<th>Product Description</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Add to basket</th>			
+				</tr>
+				{% for i in query_results %}
+				<tr> 
+					<form method="POST">
+					<td>{{ i.sku }}</td>
+					<td>{{ i.product_description }}</td>
+					<td>
+							{% csrf_token %}
+							<p>{{ form.as_p }}</p>
+					</td>
+					<td>{{ i.price }}</td>
+					<td>
+						<input type="image" width="20", height="20" src="{% static 'basket.jpg' %}" value="save" />
+					</td>
+					</form>
+				</tr>
+				{% endfor %}
+		</div>
+	</div>
+{% endblock Baza%}

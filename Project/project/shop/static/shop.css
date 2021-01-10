@@ -1,0 +1,24 @@
+#core {
+  display: flex;
+  justify-content: left;
+  font-size: 12px;
+}
+
+#shop {
+  display: flex;
+  flex-direction:row-reverse;
+  justify-content: center;
+  text-align: left;
+}
+
+.table {
+	border-spacing: 10px;
+}
+
+.table tr td {
+	text-align: center;
+}
+
+.quantity_form {
+	width:60px;
+}

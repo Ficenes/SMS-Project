@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/e1cb2fb141.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'home.css' %}">
+	<title></title>
+</head>
+<body>
+	<header>
+		<a href="/">
+			<div class="header-img">
+				<div class="header-text"></div>
+				<div class="header-bg"></div>
+			</div>
+		</a>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="/store_stock/" class="link">Stores Stock</a></li>
+			<li><a href="/store_stock/" class="link">Warehouse Stock</a></li>
+			<li><a href="/shop/" class="link">Shop</a></li>
+			<li><a href="/store_stock/" class="link">In delivery</a></li>
+			<li><a href="/basket/" class="link">Basket</a></li>
+			<li><a href="/store_stock/" class="link">Invoices</a></li>
+			<li><a href="/" class="link">Contact</a></li>
+		</ul>
+	</nav>
+	<main>
+	{% block Baza %}
+	<div class="contact"><img src="{% static 'moje_zdj.jpg' %}" height="300px" width="240px"></div><br>
+	<div class="contact">Piotr Ficenes</div><br>
+	<div class="contact"><a href = "mailto: pficenes@gmail.com">Email: pficenes@gmail.com</a></div><br>
+	<div class="contact">Cell Phone: 780 128 450</div>
+	{% endblock Baza %}
+	</main>
+	<footer></footer>
+</body>
+</html>

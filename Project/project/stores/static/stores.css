@@ -1,0 +1,16 @@
+.panel {
+  background-color: rgb(87, 94, 94);
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.baza {
+  display: flex;
+  overflow: auto;
+  width: 100%;
+  height: 400px;
+}

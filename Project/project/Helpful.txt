@@ -1,0 +1,27 @@
+df = pd.read_excel('shop_db.xlsx')
+
+for i in range(df.shape[0]):
+    shop.objects.create(
+    sku = df.sku[i],
+    product_description = df.product_description[i],
+    quantity = df.quantity[i],
+    price = df.price[i],
+    value = df.value[i],
+    )
+    
+df = pd.read_excel('stores_db.xlsx')
+
+for i in range(df.shape[0]):
+    Customer_Stock_info.objects.create(
+    area = df.area[i],
+    country = df.country[i],
+    city = df.city[i], 
+    customer_name = df.customer_name[i],
+    store_name = df.store_name[i],
+    sku = df.sku[i],
+    product_description = df.product_description[i],
+    invoice_number = df.invoice_number[i],
+    quantity = df.quantity[i],
+    price = df.price[i],
+    value = df.value[i],
+    )
