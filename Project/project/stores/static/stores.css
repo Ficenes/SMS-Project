@@ -1,3 +1,9 @@
+.Stores_Stock{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 .panel {
   background-color: rgb(87, 94, 94);
   font-family: 'Montserrat', sans-serif;
@@ -13,4 +19,21 @@
   overflow: auto;
   width: 100%;
   height: 400px;
+}
+
+.form{
+  background-color: rgb(124, 5, 5);
+  position: absolute;
+  top: 675px;
+  bottom: 0;
+  width: 100%; 
+}
+
+.data_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.Stores_Quantity_Form {
+  width: 100px;
 }
