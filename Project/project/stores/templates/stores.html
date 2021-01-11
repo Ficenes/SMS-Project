@@ -6,9 +6,13 @@
 <div class="Stores_Stock">
 	<div class="panel">
 		Upload from excel->
-		<a href="{% static 'stores_db.xlsx' %}" download onclick="{{ download }}">
-			<img src="{% static 'excel.jpg' %}" alt="excel picture" height="20px" width="20px">
-		</a>
+		<form method="POST" enctype="multipart/form-data" name="fileToUpload">
+			{% csrf_token %}
+			<input type="file"  id="fileToUpload" accept=".xlsx" name="fileToUpload">
+			<button type="submit" id="uploadbtn" name="fileToUpload"> 
+				<i class="fas fa-file-upload fa-lg"></i>
+			</button>
+		</form>
 		Download to excel->
 		<a href="{% static 'stores_db.xlsx' %}" download onclick="{{ download }}">
 			<img src="{% static 'excel.jpg' %}" alt="excel picture" height="20px" width="20px">
@@ -67,11 +71,11 @@
 		</div>
 	</div>
 	<div class="form">
-		<form method="POST" class="data_form">
+		<form method="POST" class="data_form" name="data_add"> 
 			{% csrf_token %}
 			<div>Insert Data</div>		
 			<p>{{ form.as_p }}</p>
-			<input type="submit" value="SUBMIT" />
+			<input type="submit" value="SUBMIT"/>
 		</form>
 	</div>
 </div>
