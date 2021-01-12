@@ -30,6 +30,7 @@ def ExcelToSite(file):
 def show_store_stock(request):
     query_results = Customer_Stock_info.objects.all()
     form = StoresQuantityForm()
+    saved = ''
     if request.method == 'POST':
         if 'fileToUpload' in request.POST:
             uploaded_file = request.FILES['fileToUpload']
@@ -38,10 +39,13 @@ def show_store_stock(request):
             form = StoresQuantityForm(request.POST or None)
             if form.is_valid():
                 form.save()
+                saved = 'Data Added'
+                form = StoresQuantityForm()
     context = { 
         'query_results' : query_results,
         'download': SiteToExcel,
         'form': form,
+        'saved' : saved,
     }
     return render(request, "stores.html", context)
 

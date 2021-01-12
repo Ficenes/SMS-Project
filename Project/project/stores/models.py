@@ -11,3 +11,7 @@ class Customer_Stock_info(models.Model):
     quantity = models.IntegerField()
     price = models.IntegerField()
 
+    @property
+    def value(self):
+        return self.quantity * self.price
+

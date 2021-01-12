@@ -16,15 +16,15 @@ class StoresQuantityForm(forms.ModelForm):
             'price',
         ]
         labels = {
-            'area': '',
-            'country': '',
-            'city': '',
-            'store_name': '',
-            'sku': '',
-            'product_description': '',
-            'invoice_number': '',
-            'quantity': '',
-            'price': '',
+            'area': 'Area',
+            'country': 'Country',
+            'city': 'City',
+            'store_name': 'Store Name',
+            'sku': 'SKU',
+            'product_description': 'Product Description',
+            'invoice_number': 'Invoice Number',
+            'quantity': 'Quantity',
+            'price': 'Price',
         }
         widgets = {
             'area': forms.TextInput(attrs={'class' : 'Stores_Quantity_Form'}),

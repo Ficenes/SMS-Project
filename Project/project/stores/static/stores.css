@@ -26,6 +26,15 @@
   margin-right: 10px;
 }
 
+.panel p {
+  margin-right: 15px;
+
+}
+
+.panel p:hover{
+  color: rgb(161, 213, 255);
+}
+
 .panel a{
   margin-right: 25px;
 }
@@ -33,6 +42,9 @@
 .panel_baza {
   display: flex;
   flex-direction: row;
+  position: fixed;
+  bottom: 30px;
+  top: 266px;
 }
 
 .left_panel {
@@ -42,13 +54,49 @@
   font-size: 0.9em;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 175px;
+}
+
+.data_form div {
+  background-color:rgb(161, 213, 255);
+  height: 53px;
+  text-align: center;
+  padding: 18px 0;
+  width: 175px;
+}
+
+.Stores_Quantity_Form {
+  height: 25px;
+  width: 175px;
+}
+
+
+input[type=submit] {
+  background-color: rgb(161, 213, 255);
+  border: 1px solid #ddd;
+  color: rgb(87, 94, 94);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  height: 25px;
+  width: 175px;
+  margin-top: 10px;
+}
+
+input[type=submit]:hover {
+  color: white;
 }
 
 .baza {
   display: flex;
   overflow: auto;
   width: 100%;
-  height: 400px;
+  height: 450px;
 }
 
 .content-table {
@@ -85,45 +133,12 @@
   border-bottom: 2px solid rgb(161, 213, 255);
 }
 
-.form{
+.footer {
   background-color: rgb(87, 94, 94);
-  position: absolute;
-  top: 675px;
+  width: 100%;
+  position: fixed;
   bottom: 0;
-  width: 100%; 
-}
-
-.data_form {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 20px;
-}
-
-.data_form div {
-  width: 126px;
-  height: 25px;
-  margin-top: 12px;
+  height: 15px;
   color: white;
-  font-weight: bold;
-}
-
-.Stores_Quantity_Form {
-  width: 126px;
-  height: 25px;
-  margin-top: 10px;
-  border: 1px solid #ddd;
-}
-
-input[type=submit] {
-  width: 125px;
-  height: 25px;
-  margin-top: 10px;
-  background-color: rgb(161, 213, 255);
-  border: 1px solid #ddd;
-  color: rgb(87, 94, 94);
-  font-size: 1em;
-  text-transform: uppercase;
-  font-weight: normal;
-  font-family: sans-serif;
+  padding-left: 75px;
 }
