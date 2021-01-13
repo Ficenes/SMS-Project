@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Customer_Stock_info(models.Model):
     area = models.CharField(max_length=64)
     country = models.CharField(max_length=64)
@@ -10,8 +11,4 @@ class Customer_Stock_info(models.Model):
     invoice_number = models.CharField(max_length=64)
     quantity = models.IntegerField()
     price = models.IntegerField()
-
-    @property
-    def value(self):
-        return self.quantity * self.price
-
+    value = models.IntegerField(blank=True, null=True)

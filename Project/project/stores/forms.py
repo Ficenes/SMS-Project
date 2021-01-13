@@ -14,6 +14,7 @@ class StoresQuantityForm(forms.ModelForm):
             'invoice_number',
             'quantity',
             'price',
+            'value'
         ]
         labels = {
             'area': 'Area',
@@ -25,6 +26,7 @@ class StoresQuantityForm(forms.ModelForm):
             'invoice_number': 'Invoice Number',
             'quantity': 'Quantity',
             'price': 'Price',
+            'value': 'Value',
         }
         widgets = {
             'area': forms.TextInput(attrs={'class' : 'Stores_Quantity_Form'}),
@@ -36,4 +38,5 @@ class StoresQuantityForm(forms.ModelForm):
             'invoice_number': forms.TextInput(attrs={'class' : 'Stores_Quantity_Form'}),
             'quantity': forms.NumberInput(attrs={'class' : 'Stores_Quantity_Form'}),
             'price': forms.NumberInput(attrs={'class' : 'Stores_Quantity_Form'}),
+            'value': forms.HiddenInput(attrs={'class' : 'Stores_Quantity_Form'}),
         }
