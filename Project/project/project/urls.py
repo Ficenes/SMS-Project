@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from entry_view.views import entry_welcome
 from stores.views import show_store_stock
 from shop.views import show_shop
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +30,5 @@ urlpatterns = [
     path('store_stock/', show_store_stock),
     path('shop/', show_shop),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

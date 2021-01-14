@@ -1,33 +1,27 @@
 {% extends "home.html" %}
 {% block Baza %}
 {% load static %}
-	<link href="{% static 'shop.css' %}" rel="stylesheet">
-	<div id="core">
-		<div id="shop">
-			<table class="table">
-				<tr>
-					<th>Sku</th>
-					<th>Product Description</th>
-					<th>Quantity</th>
-					<th>Price</th>
-					<th>Add to basket</th>			
-				</tr>
-				{% for i in query_results %}
-				<tr> 
-					<form method="POST">
-					<td>{{ i.sku }}</td>
-					<td>{{ i.product_description }}</td>
-					<td>
-							{% csrf_token %}
-							<p>{{ form.as_p }}</p>
-					</td>
-					<td>{{ i.price }}</td>
-					<td>
-						<input type="image" width="20", height="20" src="{% static 'basket.jpg' %}" value="save" />
-					</td>
-					</form>
-				</tr>
-				{% endfor %}
+<link href="{% static 'shop.css' %}" rel="stylesheet">
+<div class="baza">
+	{% for i in query_results %}
+	<div class="product_block">
+		<img src="{{ i.pic.url }}" class="pic">
+		<p>{{ i.product_description }}</p>
+		<p>{{ i.sku }}</p>
+		<p>{{ i.price }} €</p>
+		<div class="form">
+			<form method="POST" class="form_field">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="hidden" name="form_sku" value="{{ i.sku }}">
+			<input type="hidden" name="form_product_description" value="{{ i.product_description }}">
+			<input type="hidden" name="form_price" value="{{ i.price }}">
+			<button type="submit" value="save" class="basket_btn">
+				<i class="fas fa-shopping-basket fa-2x"></i>
+			</button>
+			</form>
 		</div>
 	</div>
+	{% endfor %}
+</div>
 {% endblock Baza%}

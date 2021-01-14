@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<script>
+setTimeout(function(){location.replace("/shop/");}, 1500);
+</script>
+<link href="{% static 'addedToBasket.css' %}" rel="stylesheet">
+<div class="content">
+Added to basket
+</div>
+{% endblock Baza%}
