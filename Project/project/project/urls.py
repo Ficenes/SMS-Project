@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from entry_view.views import entry_welcome
 from stores.views import show_store_stock
 from shop.views import show_shop
+from basket.views import show_basket
 
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     path('', entry_welcome),
     path('store_stock/', show_store_stock),
     path('shop/', show_shop),
+    path('basket/', show_basket),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

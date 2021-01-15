@@ -2,6 +2,9 @@
 {% block Baza %}
 {% load static %}
 <link href="{% static 'shop.css' %}" rel="stylesheet">
+{% for err in form.quantity.errors %}
+<p>{{ err|escape }}</p>
+{% endfor %}
 <div class="baza">
 	{% for i in query_results %}
 	<div class="product_block">
@@ -12,10 +15,12 @@
 		<div class="form">
 			<form method="POST" class="form_field">
 			{% csrf_token %}
-			{{ form.as_p }}
+			{{ form.quantity }}
+			<input type="hidden" name="form_pic" value="{{ i.pic.url }}">
 			<input type="hidden" name="form_sku" value="{{ i.sku }}">
 			<input type="hidden" name="form_product_description" value="{{ i.product_description }}">
 			<input type="hidden" name="form_price" value="{{ i.price }}">
+			<input type="hidden" name="form_value" value="{{ i.value }}">
 			<button type="submit" value="save" class="basket_btn">
 				<i class="fas fa-shopping-basket fa-2x"></i>
 			</button>

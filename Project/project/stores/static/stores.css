@@ -51,7 +51,7 @@
   flex-direction: row;
   position: fixed;
   top: 266px;
-  bottom: 0;
+  bottom: 20px;
   right: 0;
 }
 
@@ -63,11 +63,29 @@
   font-weight: bold;
   text-align: center;
   display: none;
-  overflow: scroll;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+@keyframes form_pop {
+  from {width: 50px;}
+  to {background-color: 175px;}
 }
 
 .form {
   width: 175px;
+  animation-name: form_pop;
+  animation-duration: 1s;
+}
+
+.data_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 175px;
+  height: 100%;
+  padding-bottom: 4px;
 }
 
 .data_form div {
@@ -75,25 +93,28 @@
   height: 53px;
   text-align: center;
   padding: 18px 0;
-  width: 175px;
+  width: 100%;
+  box-shadow: 2px 2px 6px #888888;
 }
 
 .Stores_Quantity_Form {
   height: 25px;
   width: 175px;
+  text-align: center;
+  border: none;
+  box-shadow: 2px 2px 6px #888888;
 }
-
 
 input[type=submit] {
   background-color: rgb(161, 213, 255);
-  border: 1px solid #ddd;
+  border: none;
   color: rgb(87, 94, 94);
   text-transform: uppercase;
   font-weight: bold;
   font-family: sans-serif;
   height: 25px;
   width: 175px;
-  margin-top: 10px;
+  box-shadow: 2px 2px 6px #888888;
 }
 
 input[type=submit]:hover {
@@ -101,18 +122,13 @@ input[type=submit]:hover {
 }
 
 .baza {
-  display: flex;
   overflow: auto;
   width: 100%;
-  position: relative;
-  top: 0px;
-  bottom: 25px;
 }
 
 .content-table {
   border-collapse: collapse;
   font-size: 0.9em;
-  overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
@@ -148,7 +164,7 @@ input[type=submit]:hover {
   width: 100%;
   position: fixed;
   bottom: 0;
-  height: 15px;
+  height: 20px;
   color: white;
   padding-left: 75px;
 }

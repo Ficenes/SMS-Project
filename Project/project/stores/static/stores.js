@@ -1,7 +1,7 @@
 function showAddBar() {
     var x = document.getElementById("add_panel");
     if (x.style.display === "none") {
-    x.style.display = "block";
+    x.style.display = "flex";
     } else {
     x.style.display = "none";
     }
