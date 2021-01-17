@@ -6,7 +6,9 @@ class Shop(models.Model):
     product_description = models.CharField(max_length=256)
     quantity = models.IntegerField()
     price = models.IntegerField()
-    value = models.IntegerField()
+    @property
+    def value(self):
+        return self.price * self.quantity
 
     def __str__(self):
         return self.product_description

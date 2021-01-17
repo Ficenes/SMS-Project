@@ -5,13 +5,29 @@
 <div class="baza">
 	{% for i in query_results %}
 	<div class="product_block">
-		<img src="{{ i.pic.url }}" class="pic">
-		<p>{{ i.product_description }}</p>
-		<p>{{ i.sku }}</p>
-		<p>{{ i.price }}</p>
-		<p>{{ i.quantity }}</p>
-		<p>{{ i.value }}</p>
+		<img src="{{ i.pic }}" class="pic">
+		<div class="text_area">
+			<p>{{ i.product_description }}</p>
+			<p>{{ i.sku }}</p>
+			<p>Price : {{ i.price }}</p>
+			<p>Quantity : {{ i.quantity }}</p>
+			<p>Value : {{ i.value }}</p>
+		</div>
+		<form method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Delete from Basket" class="del_btn">
+			<input type="hidden" name="form_id" value="{{ i.id }}">
+			<input type="hidden" name="form_pic" value="{{ i.pic.url }}">
+			<input type="hidden" name="form_sku" value="{{ i.sku }}">
+			<input type="hidden" name="form_product_description" value="{{ i.product_description }}">
+			<input type="hidden" name="form_price" value="{{ i.price }}">
+			<input type="hidden" name="form_value" value="{{ i.value }}">
+		</form>
 	</div>
 	{% endfor %}
+	<div class="product_block" id="totals">
+		<p>{{ quantity_total }}</p>
+		<p>{{ value_total }}</p>
+	</div>
 </div>
 {% endblock Baza%}

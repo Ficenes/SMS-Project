@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Customer_Stock_info
 from .forms import StoresQuantityForm
+from basket.models import Basket
 import pandas as pd
 
 
@@ -16,19 +17,20 @@ def ExcelToSite(file):
     df = pd.read_excel(file)
     for i in range(df.shape[0]):
         Customer_Stock_info.objects.create(
-        area = df.area[i],
-        country = df.country[i],
-        city = df.city[i], 
-        store_name = df.store_name[i],
-        sku = df.sku[i],
-        product_description = df.product_description[i],
-        invoice_number = df.invoice_number[i],
-        quantity = df.quantity[i],
-        price = df.price[i],
-        value = df.value[i],
+            area = df.area[i],
+            country = df.country[i],
+            city = df.city[i], 
+            store_name = df.store_name[i],
+            sku = df.sku[i],
+            product_description = df.product_description[i],
+            invoice_number = df.invoice_number[i],
+            quantity = df.quantity[i],
+            price = df.price[i],
+            value = df.value[i],
         )
 
 def show_store_stock(request):
+    n_objects = Basket.objects.all().count()
     query_results = Customer_Stock_info.objects.all()
     form = StoresQuantityForm()
     saved = ''
@@ -54,5 +56,6 @@ def show_store_stock(request):
         'form': form,
         'saved' : saved,
         'error' : error,
+        'n_objects' : n_objects,
     }
     return render(request, "stores.html", context)
