@@ -5,12 +5,15 @@ main {
   top: 245px;
   bottom: 0;
   overflow: scroll;
+  display: flex;
+  flex-direction: row;
 }
 
 .baza {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
 }
 
 .product_block {
@@ -71,4 +74,9 @@ main {
   height: 30px;
   width: 140px;
   color: red;
+}
+
+.totals {
+  overflow: visible;
+  width: 20%;
 }

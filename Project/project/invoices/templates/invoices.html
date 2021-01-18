@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<link href="{% static 'invoices.css' %}" rel="stylesheet">
+<div class="baza">
+	{% for i in query_results %}
+	<div class="invoices_block">
+		<p>{{ i.invoice_number }}</p>
+		<p>{{ i.invoice_date }}</p>
+		<p>{{ i.sku }}</p>
+		<p>{{ i.product_description }}</p>
+		<p>{{ i.quantity }}</p>
+		<p>{{ i.price }}</p>
+		<p>{{ i.volume }}</p>
+		<form method="POST">
+			{% csrf_token %}
+			<input type="submit" class="#" value="Delete invoice">
+			<input type="hidden" name="form_invoice_number" value="{{ i.invoice_number }}">
+		</form>
+	</div>
+	{% endfor %}
+</div>
+{% endblock Baza%}
