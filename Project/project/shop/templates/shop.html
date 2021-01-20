@@ -2,12 +2,7 @@
 {% block Baza %}
 {% load static %}
 <link href="{% static 'shop.css' %}" rel="stylesheet">
-{% for err in form.quantity.errors %}
-<p>{{ err|escape }}</p>
-<p>{{ error }}</p>
-{% endfor %}
 <div class="baza">
-	{{ error }}
 	{% for i in query_results %}
 	<div class="product_block">
 		<img src="{{ i.pic.url }}" class="pic">

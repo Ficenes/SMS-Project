@@ -3,7 +3,7 @@
 {% load static %}
 <link href="{% static 'invoices.css' %}" rel="stylesheet">
 <div class="baza">
-	{% for i in query_results %}
+	{% for i in inv_base %}
 	<div class="invoices_block">
 		<p>{{ i.invoice_number }}</p>
 		<p>{{ i.invoice_date }}</p>
