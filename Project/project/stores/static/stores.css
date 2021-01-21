@@ -79,6 +79,18 @@
   animation-duration: 1s;
 }
 
+.filter_form {
+  width: 300px;
+  font-family: sans-serif;
+  color: rgb(87, 94, 94);
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .data_form {
   display: flex;
   flex-direction: column;
@@ -155,8 +167,27 @@ input[type=submit]:hover {
   border-bottom: 2px solid rgb(161, 213, 255);
 }
 
-.content-table .edit {
+.content-table .edit, .content-table .delete {
   display: none;
+}
+
+.content-table .edit .del_btn, .content-table .delete .del_btn{
+  background-color: white;
+  border: none;
+  color: rgb(87, 94, 94);
+  text-transform: none;
+  font-weight: none;
+  font-family: sans-serif;
+  height: 25px;
+  width: 60px;
+  box-shadow: none;
+}
+
+.content-table .edit .del_btn:hover, .content-table .delete .del_btn:hover{
+  background-color: darkgrey;
+  color: white;
+  box-shadow: 2px 2px 6px #888888;
+  border-radius: 5px;
 }
 
 .footer {

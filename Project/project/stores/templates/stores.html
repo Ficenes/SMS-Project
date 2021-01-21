@@ -1,6 +1,7 @@
 {% extends "home.html" %}
 {% block Baza %}
 {% load static %}
+{% load bootstrap %}
 <link href="{% static 'stores.css' %}" rel="stylesheet">
 <script src="{% static 'stores.js' %}"></script> 
 <div class="Stores_Stock">
@@ -34,6 +35,14 @@
 				</form>
 			</div>
 		</div>
+		<div class="filter_form" id="filter_form">
+			<div class="form">
+				<form method="GET" class="data_form">
+					<p>{{ filter.form }}</p>
+					<input type="submit" value="SEARCH"/>
+				</form>
+			</div>
+		</div>
 		<div class="baza">
 			<table class="content-table">
 				<thead>
@@ -49,9 +58,10 @@
 						<th>Price</th>
 						<th>Value</th>
 						<th class="edit">Edit</th>
+						<th class="delete">Delete</th>
 					</tr>
 				</thead>
-				{% for i in query_results %}
+				{% for i in filter.qs %}
 				<tbody>
 					<tr> 
 						<td>{{ i.area }}</td>
@@ -64,7 +74,12 @@
 						<td>{{ i.quantity }}</td>
 						<td>{{ i.price }}</td>
 						<td>{{ i.value }}</td>
-						<td class="edit"><i class="fas fa-edit"></i>Edit</td>
+						<form method="POST">
+							{% csrf_token %}
+							<td class="edit"><i class="fas fa-edit"></i><input type="submit" value="Edit" class="del_btn" name="form_edit"></td>
+							<td class="delete"><i class="fas fa-trash-alt"></i><input type="submit" value="Delete" class="del_btn" name="form_delete"></td>
+							<input type="hidden" name="form_id" value="{{ i.id }}">
+						</form>
 					</tr>
 				</tbody>
 				{% endfor %}

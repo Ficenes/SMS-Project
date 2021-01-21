@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_pivot',
+    'django_filters',
+    'bootstrapform',
     'entry_view',
     'stores',
     'shop',
