@@ -22,16 +22,27 @@
 			<a href="/shop/">Order</a>
 			<a href="/basket/">Basket(<p id="basket_count">{{ n_objects }}</p>)</a>
 			<a href="/invoices/">Invoices</a>
-			<a href="/">Coming soon</a>
+			<a href="/">Soon</a>
 			<a href="/">Contact</a>
 		</div>
 	</nav>
 	<main>
 	{% block Baza %}
-	<div class="contact"><img src="{% static 'moje_zdj.jpg' %}" height="300px" width="240px"></div><br>
-	<div class="contact">Piotr Ficenes</div><br>
-	<div class="contact"><a href = "mailto: pficenes@gmail.com">Email: pficenes@gmail.com</a></div><br>
-	<div class="contact">Cell Phone: 780 128 450</div>
+	<div class="img_bg">
+		<div class="img_box">
+			<img src="{% static 'moje_zdj.jpg' %}">
+		</div>
+		<div class="contact">
+			<p> <b>Hi!</b>, this project is called <b>,,Stock Management Systems"</b>.</br>It is a web based managing system for your warehouse & stores.</br>
+				It also provides ability to order stock and keep an eye for you order generated invoices.<br>
+				In future it will also contain preparation of shipment documents for intra store/warehouse transfers as well as as minimum stock warnings.</br>
+				In far a way future, I hope to provide stock based quality reports.
+			</p>
+			<h3>Piotr Ficenes</h3>
+			<p><a href = "mailto: pficenes@gmail.com">Email: pficenes@gmail.com</a></p>
+			<p>Cell Phone: 780 128 450</p>
+		</div>
+	</div>
 	{% endblock Baza %}
 	</main>
 	<footer></footer>
