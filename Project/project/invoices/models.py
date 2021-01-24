@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 class Invoices(models.Model):
+    '''Invoices database model'''
     invoice_number = models.CharField(max_length=64)
     invoice_date = models.DateField(auto_now_add=True)
     sku = models.CharField(max_length=64)

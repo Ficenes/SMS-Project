@@ -5,6 +5,7 @@ from basket.models import Basket
 
 
 def show_shop(request):
+    '''Function shows available goods for purchase which then are going to be added to the Basket'''
     query_results = Shop.objects.all()
     n_objects = Basket.objects.all().count()
     form = ShopQuantityForm()

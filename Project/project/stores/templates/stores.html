@@ -1,7 +1,6 @@
 {% extends "home.html" %}
 {% block Baza %}
 {% load static %}
-{% load bootstrap %}
 <link href="{% static 'stores.css' %}" rel="stylesheet">
 <script src="{% static 'stores.js' %}"></script> 
 <div class="Stores_Stock">
@@ -25,19 +24,21 @@
 		</a>
 	</div>
 	<div class="panel_baza">
-		<div class="left_panel" id="add_panel">
+		<div class="left_panel" id="add_panel" {% if is_add_form %}style="display:flex;"{% endif %}>
 			<div class="form">
 				<form method="POST" class="data_form" name="data_add"> 
 					{% csrf_token %}
 					<div>Add Data</div>		
 					<p>{{ form.as_p }}</p>
+					<input type="hidden" value="{{ edit_id }}" name="{{ to_be_edit }}"/>
 					<input type="submit" value="SUBMIT"/>
 				</form>
 			</div>
 		</div>
-		<div class="filter_form" id="filter_form">
+		<div class="filter_form" id="filter_form" {% if is_filter_form %}style="display:flex;"{% endif %}>
 			<div class="form">
 				<form method="GET" class="data_form">
+					<div>Filter Data</div>	
 					<p>{{ filter.form }}</p>
 					<input type="submit" value="SEARCH"/>
 				</form>
@@ -53,12 +54,12 @@
 						<th>Store Name</th>
 						<th>Sku</th>
 						<th>Product Description</th>
-						<th>Invoice Number</th>
+						<th>Packing Number</th>
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Value</th>
-						<th class="edit">Edit</th>
-						<th class="delete">Delete</th>
+						<th class="edit" {% if is_edit_form %}style="display:table-cell;"{% endif %}>Edit</th>
+						<th class="delete" {% if is_delete_form %}style="display:table-cell;"{% endif %}>Delete</th>
 					</tr>
 				</thead>
 				{% for i in filter.qs %}
@@ -70,14 +71,14 @@
 						<td>{{ i.store_name }}</td>
 						<td>{{ i.sku }}</td>
 						<td>{{ i.product_description }}</td>
-						<td>{{ i.invoice_number }}</td>
+						<td>{{ i.packing_number }}</td>
 						<td>{{ i.quantity }}</td>
 						<td>{{ i.price }}</td>
 						<td>{{ i.value }}</td>
 						<form method="POST">
 							{% csrf_token %}
-							<td class="edit"><i class="fas fa-edit"></i><input type="submit" value="Edit" class="del_btn" name="form_edit"></td>
-							<td class="delete"><i class="fas fa-trash-alt"></i><input type="submit" value="Delete" class="del_btn" name="form_delete"></td>
+							<td class="edit" {% if is_edit_form %}style="display:table-cell;"{% endif %}><i class="fas fa-edit"></i><input type="submit" value="Edit" class="del_btn" name="form_edit"></td>
+							<td class="delete" {% if is_delete_form %}style="display:table-cell;"{% endif %}><i class="fas fa-trash-alt"></i><input type="submit" value="Delete" class="del_btn" name="form_delete"></td>
 							<input type="hidden" name="form_id" value="{{ i.id }}">
 						</form>
 					</tr>

@@ -1,6 +1,7 @@
 from django.db import models
 
 class Shop(models.Model):
+    '''Shop database model'''
     pic = models.ImageField(null = True, blank = True)
     sku = models.CharField(max_length=64)
     product_description = models.CharField(max_length=256)

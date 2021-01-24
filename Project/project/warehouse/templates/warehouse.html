@@ -1,0 +1,94 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<link href="{% static 'warehouse.css' %}" rel="stylesheet">
+<script src="{% static 'warehouse.js' %}"></script> 
+<div class="Warhouse_Stock">
+	<div class="panel">
+		<p onclick="showAddBar()">Add</p>
+		<p onclick="showDeleteBar()">Delete</p>
+		<p onclick="showEditBar()">Edit</p>
+		<p onclick="showFilterBar()">Filter</p>
+		Upload from excel->
+		<form method="POST" enctype="multipart/form-data" name="fileToUpload">
+			{% csrf_token %}
+			<input type="file"  id="fileToUpload" accept=".xlsx" name="fileToUpload">
+			<button type="submit" id="uploadbtn" name="fileToUpload">
+				<i class="fas fa-file-upload fa-lg"></i>
+			</button>
+		</form>
+		{{ error|safe }}
+		Download to excel->
+		<a href="{% static 'warehouse_db.xlsx' %}" download onclick="{{ download }}">
+			<img src="{% static 'excel.jpg' %}" alt="excel picture" class="excel_pic">
+		</a>
+	</div>
+	<div class="panel_baza">
+		<div class="left_panel" id="add_panel" {% if is_add_form %}style="display:flex;"{% endif %}>
+			<div class="form">
+				<form method="POST" class="data_form" name="data_add"> 
+					{% csrf_token %}
+					<div>Add Data</div>		
+					<p>{{ form.as_p }}</p>
+					<input type="hidden" value="{{ edit_id }}" name="{{ to_be_edit }}"/>
+					<input type="submit" value="SUBMIT"/>
+				</form>
+			</div>
+		</div>
+		<div class="filter_form" id="filter_form" {% if is_filter_form %}style="display:flex;"{% endif %}>
+			<div class="form">
+				<form method="GET" class="data_form">
+					<div>Filter Data</div>	
+					<p>{{ filter.form }}</p>
+					<input type="submit" value="SEARCH"/>
+				</form>
+			</div>
+		</div>
+		<div class="baza">
+			<table class="content-table">
+				<thead>
+					<tr>
+						<th>Warehouse Name</th>
+						<th>Warehouse Type</th>
+						<th>Warehouse Location</th>
+						<th>Sku</th>
+						<th>Product Description</th>
+						<th>Invoice Number</th>
+						<th>Purchase Date</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Value</th>
+						<th>In Packing</th>
+						<th class="edit" {% if is_edit_form %}style="display:table-cell;"{% endif %}>Edit</th>
+						<th class="delete" {% if is_delete_form %}style="display:table-cell;"{% endif %}>Delete</th>
+					</tr>
+				</thead>
+				{% for i in filter.qs %}
+				<tbody>
+					<tr> 
+						<td>{{ i.warehouse_name }}</td>
+						<td>{{ i.warehouse_type }}</td>
+						<td>{{ i.warehouse_location }}</td>
+						<td>{{ i.sku }}</td>
+						<td>{{ i.product_description }}</td>
+						<td>{{ i.invoice_number }}</td>
+						<td>{{ i.purchase_date }}</td>
+						<td>{{ i.quantity }}</td>
+						<td>{{ i.price }}</td>
+						<td>{{ i.value }}</td>
+						<td>{{ i.in_packing }}</td>
+						<form method="POST">
+							{% csrf_token %}
+							<td class="edit" {% if is_edit_form %}style="display:table-cell;"{% endif %}><i class="fas fa-edit"></i><input type="submit" value="Edit" class="del_btn" name="form_edit"></td>
+							<td class="delete" {% if is_delete_form %}style="display:table-cell;"{% endif %}><i class="fas fa-trash-alt"></i><input type="submit" value="Delete" class="del_btn" name="form_delete"></td>
+							<input type="hidden" name="form_id" value="{{ i.id }}">
+						</form>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>		
+		</div>
+	</div>
+	<div class="footer">{{ saved }}</div>
+</div>
+{% endblock Baza%}

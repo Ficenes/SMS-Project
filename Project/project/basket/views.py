@@ -6,6 +6,7 @@ from random import randint
 
 
 def invoice_generator():
+    '''This function generates an invoice number'''
     name = 'INV'
     gen_number = randint(1,1000)
     while gen_number in Invoices.objects.all().values('invoice_number'):
@@ -14,6 +15,8 @@ def invoice_generator():
     return inv_number
     
 def show_basket(request):
+    '''This function shows Basket Model that is created after accepting goods in Shop view.
+    You have the ability to delete items from the Basket'''
     query_results = Basket.objects.all()
     n_objects = Basket.objects.all().count()
     quantity_total = Basket.objects.all().aggregate(Sum('quantity'))['quantity__sum']
