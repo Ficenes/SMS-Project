@@ -27,11 +27,22 @@
 	{% endfor %}
 </div>
 <div class="product_block" id="totals">
+	{% if quantity_total == None %}
+	<p>Total products: 0</p>
+	{% endif %}
+	{% if quantity_total != None %}
 	<p>Total products: {{ quantity_total }}</p>
+	{% endif %}
+	{% if value_total == None %}
+	<p>Total value: 0 €</p>
+	{% endif %}
+	{% if value_total != None %}
 	<p>Total value: {{ value_total }} €</p>
+	{% endif %}
 	<form method="POST">
 		{% csrf_token %}
 		<input type="submit" name="buy_basket" value="Purchase" class="del_btn">
 	</form>
+
 </div>
 {% endblock Baza%}

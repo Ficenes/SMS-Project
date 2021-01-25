@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<link href="{% static 'login.css' %}" rel="stylesheet">
+<div class="baza">
+	<form method="POST">
+	{% csrf_token %}
+	{{ form.username.label }}
+	{{ form.username }}
+	{{ form.password1.label }}
+	{{ form.password1 }}
+	{{ form.password2.label }}
+	{{ form.password2 }}
+	<input type="submit" name='' value='SUBMIT USER REGISTRATION FORM'>
+	</form>
+</div>
+{% endblock Baza%}

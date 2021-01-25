@@ -1,7 +1,7 @@
 import django_filters
 from django_filters import CharFilter, NumberFilter
 from .models import Customer_Stock_info
-from django.forms.widgets import TextInput, NumberInput
+from django.forms.widgets import TextInput, NumberInput, HiddenInput
 
 
 class SnippetFilter(django_filters.FilterSet):
@@ -26,6 +26,8 @@ class SnippetFilter(django_filters.FilterSet):
         widget=NumberInput(attrs={'placeholder': 'Price', 'class' : 'Stores_Quantity_Form'}))
     value = NumberFilter(field_name="value", lookup_expr="icontains", label='', 
         widget=NumberInput(attrs={'placeholder': 'Value', 'class' : 'Stores_Quantity_Form'}))
+    warehouse = CharFilter(field_name="warehouse", lookup_expr="icontains", label='', 
+        widget=HiddenInput(attrs={'placeholder': '', 'class' : 'Stores_Quantity_Form'}))
     class Meta:
         model = Customer_Stock_info
         fields = '__all__'

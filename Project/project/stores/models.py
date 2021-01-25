@@ -1,4 +1,5 @@
 from django.db import models
+from warehouse.models import Warehouse_Stock_info
 
 
 class Customer_Stock_info(models.Model):
@@ -13,3 +14,4 @@ class Customer_Stock_info(models.Model):
     quantity = models.IntegerField()
     price = models.IntegerField()
     value = models.IntegerField(blank=True, null=True)
+    warehouse = models.ManyToManyField(Warehouse_Stock_info)
