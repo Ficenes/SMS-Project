@@ -15,7 +15,8 @@ class StoresQuantityForm(forms.ModelForm):
             'packing_number',
             'quantity',
             'price',
-            'value'
+            'value',
+            'warehouse',
         ]
         labels = {
             'area': '',
@@ -28,6 +29,7 @@ class StoresQuantityForm(forms.ModelForm):
             'quantity': '',
             'price': '',
             'value': '',
+            'warehouse': '',
         }
         widgets = {
             'area': forms.TextInput(attrs={'class' : 'Stores_Quantity_Form', 'PlaceHolder' : 'Area'}),
@@ -40,4 +42,5 @@ class StoresQuantityForm(forms.ModelForm):
             'quantity': forms.NumberInput(attrs={'class' : 'Stores_Quantity_Form', 'PlaceHolder' : 'Quantity'}),
             'price': forms.NumberInput(attrs={'class' : 'Stores_Quantity_Form', 'PlaceHolder' : 'Price'}),
             'value': forms.HiddenInput(attrs={'class' : 'Stores_Quantity_Form', 'PlaceHolder' : 'Value'}),
+            'warehouse': forms.HiddenInput(attrs={'class' : 'Stores_Quantity_Form', 'PlaceHolder' : 'warehouse'}),
         }

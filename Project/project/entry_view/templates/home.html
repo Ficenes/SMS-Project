@@ -14,8 +14,11 @@
 			<div class="header-img"></div>
 		</a>
 		<div class="account_panel">
-			<a href="/register/" id='register'>Register</a>
-			<a href="/login/">Login</a>
+			<p class="acc_pan_con" {% if not logged_in %}style="display:none;"{% endif %}>User: </p>
+			<p class="acc_pan_con" {% if not logged_in %}style="display:none;"{% endif %}>{{ request.user }}</p>
+			<a class="acc_pan_con" href="/register/" {% if logged_in %}style="display:none;"{% endif %}>Register</a>
+			<a class="acc_pan_con" href="/login/" {% if logged_in %}style="display:none;"{% endif %}>Login</a>
+			<a class="acc_pan_con" href="/logout/" {% if not logged_in %}style="display:none;"{% endif %}>Logout</a>
 		</div>
 	</header>
 	<nav>
@@ -39,7 +42,9 @@
 			<p> <b>Hi!</b>, this project is called <b>,,Stock Management Systems"</b>.</br>It is a web based managing system for your warehouse & stores.</br>
 				It also provides ability to order stock and keep an eye for you order generated invoices.<br>
 				In future it will also contain preparation of shipment documents for intra store/warehouse transfers as well as as minimum stock warnings.</br>
-				In far a way future, I hope to provide stock based quality reports.
+				In far a way future, I hope to provide stock based quality reports.</br>
+				</br>
+				Please <a href="/register/">Register</a> and <a href="/login/">Login</a> to view the site.
 			</p>
 			<h3>Piotr Ficenes</h3>
 			<p><a href = "mailto: pficenes@gmail.com">Email: pficenes@gmail.com</a></p>

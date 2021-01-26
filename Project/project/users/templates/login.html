@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<link href="{% static 'login.css' %}" rel="stylesheet">
+<div class="baza">
+	<form method="POST">
+		{% csrf_token %}
+		<input type="text" name="username" placeholder="Username">
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" name="login" placeholder="Login">
+	</form>
+	{% for i in messages %}
+		<p>{{ i }}</p>
+	{% endfor %}
+	{{ form.errors }}
+	<p>You must have an account to view the site</p>
+	<p>Don't have an Account?<a href="/register">Sign up</a></p>
+</div>
+{% endblock Baza%}

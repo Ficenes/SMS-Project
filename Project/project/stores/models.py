@@ -14,4 +14,4 @@ class Customer_Stock_info(models.Model):
     quantity = models.IntegerField()
     price = models.IntegerField()
     value = models.IntegerField(blank=True, null=True)
-    warehouse = models.ManyToManyField(Warehouse_Stock_info)
+    warehouse = models.ManyToManyField(Warehouse_Stock_info, blank=True)

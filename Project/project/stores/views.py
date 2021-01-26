@@ -4,7 +4,9 @@ from .models import Customer_Stock_info
 from .forms import StoresQuantityForm
 from .filters import SnippetFilter
 from basket.models import Basket
+from warehouse.models import Warehouse_Stock_info
 import pandas as pd
+from django.contrib.auth.decorators import login_required
 
 
 def SiteToExcel(request):
@@ -20,7 +22,7 @@ def SiteToExcel(request):
 
 def ExcelToSite(file):
     '''
-    Function uploads an Excel file's Database and ovverides existing database in PostgreSQL
+    Function uploads an Excel file's Database and overrides existing database in PostgreSQL
         
         Parameters:
             file :  required excel file with extension of .xlsx
@@ -41,9 +43,13 @@ def ExcelToSite(file):
             value = df.value[i],
         )
 
+@login_required(login_url = '/login')
 def show_store_stock(request):
     '''Function shows currenct stores stock with ablity to Add, Delete, Filter, Edit entries 
     as well as upload new database and download it.'''
+    logged_in = False
+    if request.user.is_authenticated:
+        logged_in = True
     n_objects = Basket.objects.all().count()
     query_results = Customer_Stock_info.objects.all()
     form = StoresQuantityForm()
@@ -90,6 +96,7 @@ def show_store_stock(request):
                 instance = form.save(commit=False)
                 instance.value = instance.price * instance.quantity
                 instance.save()
+                instance.warehouse.add(Warehouse_Stock_info.objects.filter(warehouse_name='Sikorki').first())
                 saved = 'Data Added'
                 form = StoresQuantityForm()
             is_add_form = True
@@ -97,6 +104,7 @@ def show_store_stock(request):
         if 'value' in request.GET:
             is_filter_form = True
     context = { 
+        'logged_in' : logged_in,
         'query_results' : query_results,
         'download': SiteToExcel(request),
         'form': form,

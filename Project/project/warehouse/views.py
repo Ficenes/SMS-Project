@@ -5,6 +5,7 @@ from .forms import WarehouseQuantityForm
 from .filters import SnippetFilter
 from basket.models import Basket
 import pandas as pd
+from django.contrib.auth.decorators import login_required
 
 
 def SiteToExcel(request):
@@ -43,9 +44,13 @@ def ExcelToSite(file):
             in_packing = df.in_packing[i],
         )
 
+@login_required(login_url = '/login')
 def show_warehouse_stock(request):
     '''Function shows currenct warehouse stock with ablity to Add, Delete, Filter, Edit entries 
     as well as upload new database and download it.'''
+    logged_in = False
+    if request.user.is_authenticated:
+        logged_in = True
     n_objects = Basket.objects.all().count()
     query_results = Warehouse_Stock_info.objects.all()
     form = WarehouseQuantityForm()
@@ -98,7 +103,8 @@ def show_warehouse_stock(request):
     if request.method == 'GET':
         if 'value' in request.GET:
             is_filter_form = True
-    context = { 
+    context = {
+        'logged_in' : logged_in,
         'query_results' : query_results,
         'download': SiteToExcel(request),
         'form': form,

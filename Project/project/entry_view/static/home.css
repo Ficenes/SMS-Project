@@ -33,18 +33,13 @@ body{
     padding-right: 15px;
 }
 
-.account_panel a {
+.account_panel .acc_pan_con {
     margin-right: 10px;
     text-decoration: none;
     color: white;
 }
 
-#register {
-    border-right: 1px solid white;
-    padding-right: 10px;
-}
-
-.account_panel a:hover{
+.account_panel .acc_pan_con:hover{
     color: rgb(161, 213, 255);
   }
 
@@ -112,9 +107,9 @@ nav div a:hover{
 
 .contact p a {
     text-decoration: none;
-    color: white;
+    color: rgb(161, 213, 255);
 }
 
 .contact h3 {
-    margin-top: 50px;
+    margin-top: 30px;
 }

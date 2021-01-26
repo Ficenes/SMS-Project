@@ -25,7 +25,7 @@ from shop.views import show_shop
 from basket.views import show_basket
 from invoices.views import show_invoices
 from warehouse.views import show_warehouse_stock
-from users.views import show_register
+from users.views import show_register, show_login, logoutUser
 
 
 urlpatterns = [
@@ -37,6 +37,8 @@ urlpatterns = [
     path('invoices/', show_invoices),
     path('warehouse_stock/', show_warehouse_stock),
     path('register/', show_register),
+    path('login/', show_login),
+    path('logout/', logoutUser),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
