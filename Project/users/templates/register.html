@@ -2,18 +2,18 @@
 {% block Baza %}
 {% load static %}
 <link href="{% static 'register.css' %}" rel="stylesheet">
-<div class="baza">
-	<form method="POST">
-	{% csrf_token %}
-	{{ form.username.label }}
-	{{ form.username }}
-	{{ form.password1.label }}
-	{{ form.password1 }}
-	{{ form.password2.label }}
-	{{ form.password2 }}
-	<input type="submit" name='' value='SUBMIT USER REGISTRATION FORM'>
-	</form>
-	{{ form.errors }}
-	<p>Already have an Account?<a href="/login">Login</a></p>
+<div class="form">
+	<div class="baza">
+		<h2>Registration form</h2>
+		<form method="POST">
+		{% csrf_token %}
+		{{ form.username }}
+		{{ form.password1 }}
+		{{ form.password2 }}
+		<input type="submit" name='Register' value='SUBMIT'>
+		</form>
+		{{ form.errors }}
+		<p>Already have an Account?<a href="/login">Login</a></p>
+	</div>
 </div>
 {% endblock Baza%}

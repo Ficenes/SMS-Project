@@ -14,8 +14,8 @@
 			<div class="header-img"></div>
 		</a>
 		<div class="account_panel">
-			<p class="acc_pan_con" {% if not logged_in %}style="display:none;"{% endif %}>User: </p>
-			<p class="acc_pan_con" {% if not logged_in %}style="display:none;"{% endif %}>{{ request.user }}</p>
+			<p class="user" id="user" {% if not logged_in %}style="display:none;"{% endif %}>User: </p>
+			<p class="user_name" {% if not logged_in %}style="display:none;"{% endif %}>{{ request.user }}</p>
 			<a class="acc_pan_con" href="/register/" {% if logged_in %}style="display:none;"{% endif %}>Register</a>
 			<a class="acc_pan_con" href="/login/" {% if logged_in %}style="display:none;"{% endif %}>Login</a>
 			<a class="acc_pan_con" href="/logout/" {% if not logged_in %}style="display:none;"{% endif %}>Logout</a>

@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 
 class Invoice(models.Model):
@@ -12,9 +11,10 @@ class Invoice(models.Model):
     def __str__(self):
         return self.invoice_number
 
+
 class Invoices(models.Model):
     '''Detailed Invoices database model'''
-    invoice = models.ForeignKey(Invoice, on_delete = models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     sku = models.CharField(max_length=64)
     product_description = models.CharField(max_length=256)
     quantity = models.IntegerField()

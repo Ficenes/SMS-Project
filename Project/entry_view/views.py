@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from basket.models import Basket
 
 
@@ -12,7 +11,7 @@ def entry_welcome(request):
         logged_in = True
     n_objects = Basket.objects.all().count()
     context = {
-        'n_objects' : n_objects,
+        'n_objects': n_objects,
         'logged_in': logged_in,
     }
     return render(request, "home.html", context)

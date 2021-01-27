@@ -13,4 +13,4 @@ class Warehouse_Stock_info(models.Model):
     quantity = models.IntegerField()
     price = models.IntegerField()
     value = models.IntegerField(blank=True, null=True)
-    in_packing = models.BooleanField(default = False)
+    in_packing = models.BooleanField(default=False)

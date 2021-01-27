@@ -43,6 +43,18 @@ body{
     color: rgb(161, 213, 255);
   }
 
+.user {
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.user_name {
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgb(161, 213, 255);
+}
+
 /* NAV */
 nav{
     height: 45px;
