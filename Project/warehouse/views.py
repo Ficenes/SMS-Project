@@ -69,7 +69,8 @@ def show_warehouse_stock(request):
         if 'fileToUpload' in request.POST:
             try:
                 uploaded_file = request.FILES['fileToUpload']
-                ExcelToSite(uploaded_file)
+                path = uploaded_file.read()
+                ExcelToSite(path)
             except Exception:
                 error = '''<p id="error">Please upload the file</p>'''
         elif 'form_delete' in request.POST:
