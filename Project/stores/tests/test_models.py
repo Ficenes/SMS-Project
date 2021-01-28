@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.mark.django_db
-class TestModels():
+class TestModels:
 
     def test_stores_model(self):
         product = Customer_Stock_info.objects.create(

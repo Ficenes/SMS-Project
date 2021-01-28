@@ -1,7 +1,7 @@
 from django import urls
 
 
-class TestUrls():
+class TestUrls:
 
     def test_stores_view(self):
         path = urls.reverse('stores')
