@@ -46,7 +46,7 @@ def show_basket(request):
                 for i in range(0, Basket.objects.all().count()):
                     Invoices.objects.create(
                         invoice=Invoice.objects.get(
-                            invoice_number=gen_invoice),
+                        invoice_number=gen_invoice),
                         sku=instance[i]['sku'],
                         product_description=instance[i]['product_description'],
                         quantity=instance[i]['quantity'],

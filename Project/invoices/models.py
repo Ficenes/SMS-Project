@@ -15,6 +15,7 @@ class Invoice(models.Model):
 class Invoices(models.Model):
     '''Detailed Invoices database model'''
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    invoice_date = models.DateField(auto_now_add=True)
     sku = models.CharField(max_length=64)
     product_description = models.CharField(max_length=256)
     quantity = models.IntegerField()

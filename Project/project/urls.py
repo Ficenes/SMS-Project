@@ -30,15 +30,15 @@ from users.views import show_register, show_login, logoutUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', entry_welcome),
-    path('store_stock/', show_store_stock),
-    path('shop/', show_shop),
-    path('basket/', show_basket),
-    path('invoices/', show_invoices),
-    path('warehouse_stock/', show_warehouse_stock),
-    path('register/', show_register),
-    path('login/', show_login),
-    path('logout/', logoutUser),
+    path('', entry_welcome, name='entry'),
+    path('store_stock/', show_store_stock, name='stores'),
+    path('shop/', show_shop, name='shop'),
+    path('basket/', show_basket, name='basket'),
+    path('invoices/', show_invoices, name='invoices'),
+    path('warehouse_stock/', show_warehouse_stock, name='warehouse'),
+    path('register/', show_register, name='register'),
+    path('login/', show_login, name='login'),
+    path('logout/', logoutUser, name='logout'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
