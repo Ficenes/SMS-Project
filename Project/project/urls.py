@@ -23,7 +23,7 @@ from entry_view.views import entry_welcome
 from stores.views import show_store_stock
 from shop.views import show_shop
 from basket.views import show_basket
-from invoices.views import show_invoices
+from invoices.views import InvoiceView
 from warehouse.views import show_warehouse_stock
 from users.views import show_register, show_login, logoutUser
 
@@ -34,7 +34,7 @@ urlpatterns = [
     path('store_stock/', show_store_stock, name='stores'),
     path('shop/', show_shop, name='shop'),
     path('basket/', show_basket, name='basket'),
-    path('invoices/', show_invoices, name='invoices'),
+    path('invoices/', InvoiceView.as_view(), name='invoices'),
     path('warehouse_stock/', show_warehouse_stock, name='warehouse'),
     path('register/', show_register, name='register'),
     path('login/', show_login, name='login'),

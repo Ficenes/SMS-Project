@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def SiteToExcel(request):
-    '''Function downloadls the PSQL Database to computer in Excel extension'''
+    '''Function downloads the PSQL Database to computer in Excel extension'''
     df = SnippetFilter(request.GET).qs.values()
     new_df = pd.DataFrame(df)
     try:
