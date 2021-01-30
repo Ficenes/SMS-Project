@@ -38,11 +38,17 @@ def show_shop(request):
                     value=float(request.POST['form_price']) *
                     float(request.POST['quantity']),
                 )
-            context = {}
+            context = {
+                'n_objects': n_objects,
+                'logged_in': logged_in,
+            }
             return render(request, "addedToBasket.html", context)
         else:
             form = ShopQuantityForm()
-            context = {}
+            context = {
+                'n_objects': n_objects,
+                'logged_in': logged_in,
+            }
             return render(request, "error.html", context)
     context = {
         'logged_in': logged_in,

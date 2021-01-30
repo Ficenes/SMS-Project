@@ -2,36 +2,60 @@
 {% block Baza %}
 {% load static %}
 <link href="{% static 'invoices.css' %}" rel="stylesheet">
+<script src="{% static 'invoices.js' %}"></script> 
 <div class="baza">
-	{% for i in inv_base %}
-	<div class="invoices_block">
-		<p>Invoice Number: {{ i.invoice_number }}</p>
-		<p>Invoice Date: {{ i.invoice_date }}</p>
-		<p>Total Quantity: {{ i.quantity }}</p>
-		<p>Total Value: {{ i.value }}</p>
-		<form method="POST">
-			{% csrf_token %}
-			<input type="submit" class="#" value="Delete invoice">
-			<input type="hidden" name="form_invoice_number" value="{{ i.invoice_number }}">
-		</form>
+	<div class="inv_filter">
+		<div class="form">
+			<form method="GET" class="data_form">
+				<h3>Filter Invoices</h3>	
+				<p>{{ filter.form }}</p>
+				<input type="submit" class="sub_btn" value="SEARCH"/>
+			</form>
+		</div>
 	</div>
-	{% endfor %}
-	View to be corrected
-	{% for i in invs_base %}
-	<div class="invoices_block">
-		<p>Invoice Number: {{ i.invoice }}</p>
-		<p>Invoice Date: {{ i.invoice_date }}</p>
-		<p>SKU: {{ i.sku }}</p>
-		<p>Product Description: {{ i.product_description }}</p>
-		<p>Quantity: {{ i.quantity }}</p>
-		<p>Price: {{ i.price }}</p>
-		<p>Value: {{ i.value }}</p>
-		<form method="POST">
-			{% csrf_token %}
-			<input type="submit" class="#" value="Delete invoice">
-			<input type="hidden" name="form_invoice_number" value="{{ i.invoice }}">
-		</form>
+	<div class="inv">
+		<h3>Invoices</h3>
+		{% for i in filter.qs %}
+		<div class="invoice_block">
+			<p>Invoice Number: {{ i.invoice_number }}</p>
+			<p>Invoice Date: {{ i.invoice_date }}</p>
+			<p>Total Quantity: {{ i.quantity }}</p>
+			<p>Total Value: {{ i.value }}</p>
+			<div class="forms">
+				<form method="POST">
+					{% csrf_token %}
+					<input type="submit" class="del_btn" value="Delete invoice">
+					<input type="hidden" name="form_invoice_number" value="{{ i.invoice_number }}">
+				</form>
+				<form method="POST">
+					{% csrf_token %}
+					<input type="submit" class="show_details" value="Show details">
+					<input type="hidden" name="show_details" value="{{ i.id }}">
+				</form>
+			</div>
+		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
+	<div class="invoices">
+		<h3>Detailed Description</h3>
+		<div id="invs">
+			{% for i in invs_base %}
+			<div class="invoices_block">
+				<p>Invoice Number: {{ i.invoice }}</p>
+				<p>Invoice Date: {{ i.invoice_date }}</p>
+				<p>SKU: {{ i.sku }}</p>
+				<p>Product Description: {{ i.product_description }}</p>
+				<p>Quantity: {{ i.quantity }}</p>
+				<p>Price: {{ i.price }}</p>
+				<p>Value: {{ i.value }}</p>
+				<form method="POST">
+					{% csrf_token %}
+					<input type="submit" class="del_btn" value="Delete invoice">
+					<input type="hidden" name="form_invoice_number" value="{{ i.invoice }}">
+				</form>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 </div>
 {% endblock Baza%}
