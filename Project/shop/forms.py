@@ -10,5 +10,7 @@ class ShopQuantityForm(forms.Form):
         quantity = self.cleaned_data.get("quantity")
         if quantity <= 0:
             raise forms.ValidationError('Invalid number')
+        elif quantity >= 10000:
+            raise forms.ValidationError('Too Big of a Number')
         else:
             return quantity

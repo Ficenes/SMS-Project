@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Customer_Stock_info
 from .forms import StoresQuantityForm
 from .filters import SnippetFilter
@@ -7,6 +7,18 @@ from warehouse.models import Warehouse_Stock_info
 import pandas as pd
 from django.contrib.auth.decorators import login_required
 
+
+def error(request):
+    """Displays when an error occurs while uploading incorrect files"""
+    logged_in = False
+    if request.user.is_authenticated:
+        logged_in = True
+    n_objects = Basket.objects.all().count()
+    context = {
+        'logged_in': logged_in,
+        'n_objects': n_objects,
+    }
+    return render(request, "error_stores.html", context)
 
 def SiteToExcel(request):
     '''Function downloads the PSQL Database to computer in Excel extension'''
@@ -20,28 +32,32 @@ def SiteToExcel(request):
     return download
 
 
-def ExcelToSite(file):
+def ExcelToSite(file, request):
     '''
     Function uploads an Excel file's Database and overrides existing database in PostgreSQL
 
         Parameters:
             file :  required excel file with extension of .xlsx
     '''
-    Customer_Stock_info.objects.all().delete()
     df = pd.read_excel(file)
-    for i in range(df.shape[0]):
-        Customer_Stock_info.objects.create(
-            area=df.area[i],
-            country=df.country[i],
-            city=df.city[i],
-            store_name=df.store_name[i],
-            sku=df.sku[i],
-            product_description=df.product_description[i],
-            packing_number=df.packing_number[i],
-            quantity=df.quantity[i],
-            price=df.price[i],
-            value=df.value[i],
-        )
+    if df.shape[0] == 0:
+        return error(request)
+    else:
+        Customer_Stock_info.objects.all().delete()
+        for i in range(df.shape[0]):
+            Customer_Stock_info.objects.create(
+                area=df.area[i],
+                country=df.country[i],
+                city=df.city[i],
+                store_name=df.store_name[i],
+                sku=df.sku[i],
+                product_description=df.product_description[i],
+                packing_number=df.packing_number[i],
+                quantity=df.quantity[i],
+                price=df.price[i],
+                value=df.value[i],
+            )
+        return redirect('/store_stock/')
 
 
 @login_required(login_url='/login')
@@ -67,7 +83,7 @@ def show_store_stock(request):
             try:
                 uploaded_file = request.FILES['fileToUpload']
                 path = uploaded_file.read()
-                ExcelToSite(path)
+                return ExcelToSite(path, request)
             except Exception:
                 error = '''<p id="error">Please upload the file</p>'''
         elif 'form_delete' in request.POST:

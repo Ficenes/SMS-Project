@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% block Baza %}
+{% load static %}
+<script>
+setTimeout(function(){location.replace("/store_stock/");}, 1500);
+</script>
+<link href="{% static 'error.css' %}" rel="stylesheet">
+<div class="content">
+Incorrect input
+</div>
+{% endblock Baza%}

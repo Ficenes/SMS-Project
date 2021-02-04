@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from entry_view.views import entry_welcome
-from stores.views import show_store_stock
+from stores.views import show_store_stock, error
 from shop.views import show_shop
 from basket.views import show_basket
 from invoices.views import InvoiceView
